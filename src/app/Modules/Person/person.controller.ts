@@ -2,7 +2,7 @@ import { Request, Response } from 'express'
 import { personServices } from './person.services'
 import personValidationSchema from './person.validation'
 
-const createPerson = async (req: Request, res: Response) => {
+const createNewPerson = async (req: Request, res: Response) => {
   try {
     const person = req.body.$project
 
@@ -73,7 +73,7 @@ const getSingleperson = async (req: Request, res: Response) => {
     })
   }
 }
-const updateUser = async (req: Request, res: Response) => {
+const updateAUser = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
     const body = req.body
@@ -95,7 +95,7 @@ const updateUser = async (req: Request, res: Response) => {
     })
   }
 }
-const deletePerson = async (req: Request, res: Response) => {
+const deleteAPerson = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params
     const result = await personServices.deletePersonFromDB(userId)
@@ -116,7 +116,7 @@ const deletePerson = async (req: Request, res: Response) => {
     })
   }
 }
-const createOrder = async (req: Request, res: Response) => {
+const createAnOrder = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
     const body = req.body
@@ -138,7 +138,7 @@ const createOrder = async (req: Request, res: Response) => {
     })
   }
 }
-const getOrders = async (req: Request, res: Response) => {
+const getAllOrders = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
     const result = await personServices.getOrders(userId)
@@ -159,7 +159,7 @@ const getOrders = async (req: Request, res: Response) => {
     })
   }
 }
-const totalSum = async (req: Request, res: Response) => {
+const getTotalPrice = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
     const result = await personServices.totalSum(userId)
@@ -183,12 +183,12 @@ const totalSum = async (req: Request, res: Response) => {
 }
 
 export const personController = {
-  createPerson,
+  createNewPerson,
   getAllPerson,
   getSingleperson,
-  deletePerson,
-  updateUser,
-  createOrder,
-  getOrders,
-  totalSum,
+  deleteAPerson,
+  updateAUser,
+  createAnOrder,
+  getAllOrders,
+  getTotalPrice,
 }

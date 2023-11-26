@@ -5,14 +5,17 @@ const router = express.Router()
 
 //will call controller function
 
-router.post('/api/users', personController.createPerson)
+router.post('/api/users', personController.createNewPerson)
 router.get('/api/users', personController.getAllPerson)
 router.get('/api/users/:userId', personController.getSingleperson)
-router.put('/api/users/:userId', personController.updateUser)
-router.delete('/api/users/:userId', personController.deletePerson)
-router.put('/api/users/:userId/orders', personController.createOrder)
-router.get('/api/users/:userId/orders', personController.getOrders)
-router.get('/api/users/:userId/orders/total-price', personController.totalSum)
+router.put('/api/users/:userId', personController.updateAUser)
+router.delete('/api/users/:userId', personController.deleteAPerson)
+router.put('/api/users/:userId/orders', personController.createAnOrder)
+router.get('/api/users/:userId/orders', personController.getAllOrders)
+router.get(
+  '/api/users/:userId/orders/total-price',
+  personController.getTotalPrice,
+)
 
 //we know that router is an object thats why we export easyly.
 export const personRoute = router

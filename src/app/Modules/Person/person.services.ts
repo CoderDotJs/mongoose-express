@@ -1,5 +1,3 @@
-//All busness logic in here
-
 import { TOrder, TPerson } from './person.interface'
 import { Person } from './person.model'
 
@@ -106,15 +104,16 @@ const getOrders = async (userId: string) => {
 const totalSum = async (userId: string) => {
   const isExists = await Person.isExists(userId)
   if (isExists) {
-    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
-    const find: { _id: string | null } = await Person.findOne({
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars, @typescript-eslint/no-explicit-any
+    const find: any = await Person.findOne({
       userId,
     }).select('_id')
+    //match not working with userId so i had to find the _id first and then use the aggregate to calculate the total price
     const res = await Person.aggregate([
       {
         $match: {
           _id: {
-            $in: [find._id],
+            $in: [find?._id],
           },
         },
       },
@@ -124,8 +123,6 @@ const totalSum = async (userId: string) => {
       {
         $project: {
           orders: 1,
-          // _id: 1,
-          // userId: 1,
           total: {
             $multiply: ['$orders.quantity', '$orders.price'],
           },

@@ -1,7 +1,7 @@
 import { TOrder, TPerson } from './person.interface'
 import { Person } from './person.model'
 
-const createPersonFromDB = async (person: TPerson) => {
+const createAPerson = async (person: TPerson) => {
   const result = await Person.create(person)
   return {
     userId: result.userId,
@@ -21,8 +21,7 @@ const createPersonFromDB = async (person: TPerson) => {
     },
   }
 }
-
-const getAllPersonFromDB = async () => {
+const getAllPerson = async () => {
   const result = await Person.aggregate([
     //stage-1
     {
@@ -46,7 +45,6 @@ const getAllPersonFromDB = async () => {
   ])
   return result
 }
-
 const getSinglePersonFromDB = async (userId: string) => {
   const isExists = await Person.isExists(userId)
   return isExists
@@ -64,7 +62,6 @@ const updateUserById = async (userId: string, body: TPerson) => {
     return res
   }
 }
-
 const deletePersonFromDB = async (id: string) => {
   const result: TPerson = await Person.findOneAndUpdate(
     { userId: id },
@@ -75,7 +72,6 @@ const deletePersonFromDB = async (id: string) => {
   }
   return result
 }
-
 const creatOrder = async (userId: string, body: TOrder) => {
   const isExists = await Person.isExists(userId)
   if (isExists) {
@@ -155,8 +151,8 @@ const totalSum = async (userId: string) => {
 }
 
 export const personServices = {
-  createPersonFromDB,
-  getAllPersonFromDB,
+  createAPerson,
+  getAllPerson,
   getSinglePersonFromDB,
   deletePersonFromDB,
   updateUserById,

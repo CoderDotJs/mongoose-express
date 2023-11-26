@@ -9,7 +9,7 @@ const createNewPerson = async (req: Request, res: Response) => {
     //data validation using joi
     const { error, value } = personValidationSchema.validate(person)
     //send data to db
-    const result = await personServices.createPersonFromDB(value)
+    const result = await personServices.createAPerson(value)
 
     if (error) {
       res.status(500).json({
@@ -35,7 +35,7 @@ const createNewPerson = async (req: Request, res: Response) => {
 }
 const getAllPerson = async (req: Request, res: Response) => {
   try {
-    const result = await personServices.getAllPersonFromDB()
+    const result = await personServices.getAllPerson()
     res.status(200).json({
       success: true,
       message: 'All User fetched successfully!',

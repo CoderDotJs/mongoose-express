@@ -58,7 +58,6 @@ const personSchema = new Schema<TPerson>({
   fullName: {
     type: FullName,
     required: true,
-    // trim: true,
   },
   age: {
     type: Number,
@@ -101,7 +100,7 @@ personSchema.pre('save', async function (next) {
   next()
 })
 
-//password don't response
+//exclude password on response
 personSchema.post('save', async function (doc, next) {
   doc.password = ' '
   next()

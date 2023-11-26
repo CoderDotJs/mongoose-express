@@ -33,7 +33,6 @@ const createNewPerson = async (req: Request, res: Response) => {
     })
   }
 }
-
 const getAllPerson = async (req: Request, res: Response) => {
   try {
     const result = await personServices.getAllPersonFromDB()
@@ -51,8 +50,7 @@ const getAllPerson = async (req: Request, res: Response) => {
     })
   }
 }
-
-const getSingleperson = async (req: Request, res: Response) => {
+const getSinglePerson = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
     const result = await personServices.getSinglePersonFromDB(userId)
@@ -185,7 +183,7 @@ const getTotalPrice = async (req: Request, res: Response) => {
 export const personController = {
   createNewPerson,
   getAllPerson,
-  getSingleperson,
+  getSinglePerson,
   deleteAPerson,
   updateAUser,
   createAnOrder,

@@ -1,13 +1,10 @@
 import express from 'express'
 import { personController } from './person.controller'
-
 const router = express.Router()
-
-//will call controller function
 
 router.post('/api/users', personController.createNewPerson)
 router.get('/api/users', personController.getAllPerson)
-router.get('/api/users/:userId', personController.getSingleperson)
+router.get('/api/users/:userId', personController.getSinglePerson)
 router.put('/api/users/:userId', personController.updateAUser)
 router.delete('/api/users/:userId', personController.deleteAPerson)
 router.put('/api/users/:userId/orders', personController.createAnOrder)
@@ -17,5 +14,4 @@ router.get(
   personController.getTotalPrice,
 )
 
-//we know that router is an object thats why we export easyly.
 export const personRoute = router

@@ -50,10 +50,10 @@ const getAllPerson = async (req: Request, res: Response) => {
     })
   }
 }
-const getSinglePerson = async (req: Request, res: Response) => {
+const getAPerson = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
-    const result = await personServices.getSinglePersonFromDB(userId)
+    const result = await personServices.getAPerson(userId)
     res.status(200).json({
       success: true,
       message: 'Single User fetched successfully!',
@@ -183,7 +183,7 @@ const getTotalPrice = async (req: Request, res: Response) => {
 export const personController = {
   createNewPerson,
   getAllPerson,
-  getSinglePerson,
+  getAPerson,
   deleteAPerson,
   updateAUser,
   createAnOrder,

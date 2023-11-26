@@ -4,7 +4,7 @@ const router = express.Router()
 
 router.post('/api/users', personController.createNewPerson)
 router.get('/api/users', personController.getAllPerson)
-router.get('/api/users/:userId', personController.getSinglePerson)
+router.get('/api/users/:userId', personController.getAPerson)
 router.put('/api/users/:userId', personController.updateAUser)
 router.delete('/api/users/:userId', personController.deleteAPerson)
 router.put('/api/users/:userId/orders', personController.createAnOrder)

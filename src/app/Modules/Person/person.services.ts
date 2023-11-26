@@ -45,7 +45,7 @@ const getAllPerson = async () => {
   ])
   return result
 }
-const getSinglePersonFromDB = async (userId: string) => {
+const getAPerson = async (userId: string) => {
   const isExists = await Person.isExists(userId)
   return isExists
 }
@@ -153,7 +153,7 @@ const totalSum = async (userId: string) => {
 export const personServices = {
   createAPerson,
   getAllPerson,
-  getSinglePersonFromDB,
+  getAPerson,
   deletePersonFromDB,
   updateUserById,
   creatOrder,

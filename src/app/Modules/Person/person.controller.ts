@@ -75,7 +75,7 @@ const updateAUser = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
     const body = req.body
-    const result = await personServices.updateUserById(userId, body)
+    const result = await personServices.updateAnUser(userId, body)
     res.status(200).json({
       success: true,
       message: 'User updated!',
@@ -96,7 +96,7 @@ const updateAUser = async (req: Request, res: Response) => {
 const deleteAPerson = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params
-    const result = await personServices.deletePersonFromDB(userId)
+    const result = await personServices.deleteUser(userId)
     res.status(200).json({
       success: true,
       message: 'User Deleted successfully!',

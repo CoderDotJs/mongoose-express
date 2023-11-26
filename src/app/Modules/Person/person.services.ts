@@ -49,7 +49,7 @@ const getAPerson = async (userId: string) => {
   const isExists = await Person.isExists(userId)
   return isExists
 }
-const updateUserById = async (userId: string, body: TPerson) => {
+const updateAnUser = async (userId: string, body: TPerson) => {
   const isExists = await Person.isExists(userId)
   if (isExists) {
     const res = await Person.findOneAndUpdate(
@@ -62,7 +62,7 @@ const updateUserById = async (userId: string, body: TPerson) => {
     return res
   }
 }
-const deletePersonFromDB = async (id: string) => {
+const deleteUser = async (id: string) => {
   const result: TPerson = await Person.findOneAndUpdate(
     { userId: id },
     { isDeleted: true },
@@ -154,8 +154,8 @@ export const personServices = {
   createAPerson,
   getAllPerson,
   getAPerson,
-  deletePersonFromDB,
-  updateUserById,
+  deleteUser,
+  updateAnUser,
   creatOrder,
   getOrders,
   totalSum,

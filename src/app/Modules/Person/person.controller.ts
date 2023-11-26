@@ -118,7 +118,7 @@ const createAnOrder = async (req: Request, res: Response) => {
   try {
     const userId: string = req.params?.userId
     const body = req.body
-    const result = await personServices.creatOrder(userId, body)
+    const result = await personServices.createOrder(userId, body)
     res.status(200).json({
       success: true,
       message: 'Order created successfully!',

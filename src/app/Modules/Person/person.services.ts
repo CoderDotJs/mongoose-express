@@ -72,7 +72,7 @@ const deleteUser = async (id: string) => {
   }
   return result
 }
-const creatOrder = async (userId: string, body: TOrder) => {
+const createOrder = async (userId: string, body: TOrder) => {
   const isExists = await Person.isExists(userId)
   if (isExists) {
     // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
@@ -156,7 +156,7 @@ export const personServices = {
   getAPerson,
   deleteUser,
   updateAnUser,
-  creatOrder,
+  createOrder,
   getOrders,
   totalSum,
 }

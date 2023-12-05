@@ -4,7 +4,7 @@ import personValidationSchema from './person.validation'
 
 const createNewPerson = async (req: Request, res: Response) => {
   try {
-    const person = req.body.$project
+    const person = req.body
 
     //data validation using joi
     const { error, value } = personValidationSchema.validate(person)
@@ -168,7 +168,7 @@ const getTotalPrice = async (req: Request, res: Response) => {
     })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
-    console.log(err)
+    // console.log(err)
     res.status(500).json({
       success: false,
       message: 'User not found',

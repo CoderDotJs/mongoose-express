@@ -96,11 +96,12 @@ const updateAUser = async (req: Request, res: Response) => {
 const deleteAPerson = async (req: Request, res: Response) => {
   try {
     const { userId } = req.params
+    // eslint-disable-next-line no-unused-vars, @typescript-eslint/no-unused-vars
     const result = await personServices.deleteUser(userId)
     res.status(200).json({
       success: true,
       message: 'User Deleted successfully!',
-      data: result,
+      data: null,
     })
     // eslint-disable-next-line @typescript-eslint/no-explicit-any
   } catch (err: any) {
